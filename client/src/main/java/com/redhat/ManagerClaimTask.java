@@ -77,8 +77,5 @@ public class ManagerClaimTask {
 			processTask(userTaskServicesClient, username, taskSummary);
 			return;
 		}
-
-		/*ServiceResponse<ExecutionResults> response = rules.executeCommandsWithResults("DemoContainer", cmdFactory.newBatchExecution(commands, "DemoProjectSession"));
-		System.out.println(response.getMsg());*/
 	}
 }

@@ -39,9 +39,6 @@ public class ProcessStart {
 
 		Long processInstanceId = processServicesClient.startProcess("LoanApproval", "LoanApproval.Application", processArgs);
 
-
-
-		/*ServiceResponse<ExecutionResults> response = rules.executeCommandsWithResults("DemoContainer", cmdFactory.newBatchExecution(commands, "DemoProjectSession"));
-		System.out.println(response.getMsg());*/
+		System.out.println("Started process instance: " + processInstanceId);
 	}
 }
