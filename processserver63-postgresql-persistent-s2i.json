@@ -84,7 +84,7 @@
         {
             "description": "Path within Git project to build; empty for root project directory.",
             "name": "CONTEXT_DIR",
-            "value": "",
+            "value": "ips-demo",
             "required": false
         },
         {
