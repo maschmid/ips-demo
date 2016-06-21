@@ -20,7 +20,7 @@ import java.util.Set;
  * Created by maschmid on 20/06/16.
  */
 public class ManagerClaimTask {
-	private static final String ENDPOINT = "http://kie-app-maschmid.apps.latest.xpaas/kie-server/services/rest/server";
+	private static final String ENDPOINT = "http://kie-app-cruyff-ips-training.apps.latest.xpaas/kie-server/services/rest/server";
 	//private static final String USERNAME = "kieserver";
 	//private static final String PASSWORD = "kieserver1!";
 

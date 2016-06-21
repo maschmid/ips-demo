@@ -19,7 +19,7 @@ import java.util.Set;
  * Created by maschmid on 20/06/16.
  */
 public class UserTasksList {
-	private static final String ENDPOINT = "http://kie-app-maschmid.apps.latest.xpaas/kie-server/services/rest/server";
+	private static final String ENDPOINT = "http://kie-app-cruyff-ips-training.apps.latest.xpaas/kie-server/services/rest/server";
 
 	//private static final String USERNAME = "joe";
 	//private static final String PASSWORD = "joejoejoe123!";
@@ -39,8 +39,14 @@ public class UserTasksList {
 
 		final UserTaskServicesClient userTaskServicesClient = client.getServicesClient(UserTaskServicesClient.class);
 
+		System.out.println(username + "'s tasks:");
 		for (TaskSummary taskSummary : userTaskServicesClient.findTasks(username, 0, 50)) {
-			System.out.println("task: " + taskSummary.getName() + " owned by: " + taskSummary.getActualOwner());
+			System.out.println("  task: " + taskSummary.getName() + " owned by: " + taskSummary.getActualOwner() + " state: " + taskSummary.getStatus());
+		}
+
+		System.out.println(username + " as potential owner: ");
+		for (TaskSummary taskSummary : userTaskServicesClient.findTasksAssignedAsPotentialOwner(username, 0, 50)) {
+			System.out.println("  task: " + taskSummary.getName() + " owned by: " + taskSummary.getActualOwner() + " state: " + taskSummary.getStatus());
 		}
 	}
 }
