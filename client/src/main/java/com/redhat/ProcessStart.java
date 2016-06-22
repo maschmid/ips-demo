@@ -1,25 +1,13 @@
 package com.redhat;
 
-import org.kie.api.KieServices;
-import org.kie.api.command.Command;
-import org.kie.api.command.KieCommands;
-import org.kie.api.runtime.ExecutionResults;
-import org.kie.server.api.marshalling.MarshallingFormat;
-import org.kie.server.api.model.ServiceResponse;
 import org.kie.server.client.KieServicesClient;
 import org.kie.server.client.KieServicesConfiguration;
 import org.kie.server.client.KieServicesFactory;
 import org.kie.server.client.ProcessServicesClient;
-import org.kie.server.client.RuleServicesClient;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
-/**
- * Created by maschmid on 20/06/16.
- */
 public class ProcessStart {
 	private static final String ENDPOINT = "http://kie-app-cruyff-ips-training.apps.latest.xpaas/kie-server/services/rest/server";
 	private static final String USERNAME = "kieserver";

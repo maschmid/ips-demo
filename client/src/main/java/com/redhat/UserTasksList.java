@@ -1,28 +1,18 @@
 package com.redhat;
 
-import org.kie.server.api.model.instance.TaskInstance;
 import org.kie.server.api.model.instance.TaskSummary;
 import org.kie.server.client.KieServicesClient;
 import org.kie.server.client.KieServicesConfiguration;
 import org.kie.server.client.KieServicesFactory;
-import org.kie.server.client.ProcessServicesClient;
 import org.kie.server.client.UserTaskServicesClient;
 
 import com.redhat.xpaas.qe.loanapproval.Application;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by maschmid on 20/06/16.
- */
 public class UserTasksList {
 	private static final String ENDPOINT = "http://kie-app-cruyff-ips-training.apps.latest.xpaas/kie-server/services/rest/server";
-
-	//private static final String USERNAME = "joe";
-	//private static final String PASSWORD = "joejoejoe123!";
 
 	public static void main(String[] args) {
 
