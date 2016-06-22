@@ -21,9 +21,9 @@ public class ProcessStart {
 		final ProcessServicesClient processServicesClient = client.getServicesClient(ProcessServicesClient.class);
 
 		Map<String, Object> processArgs = new HashMap<>();
-		processArgs.put("age", 26);
-		processArgs.put("amount", 120);
-		processArgs.put("income", 1000);
+		processArgs.put("age", Integer.parseInt(args[0]));
+		processArgs.put("amount", Integer.parseInt(args[1]));
+		processArgs.put("income", Integer.parseInt(args[2]));
 
 		Long processInstanceId = processServicesClient.startProcess("LoanApproval", "LoanApproval.Application", processArgs);
 

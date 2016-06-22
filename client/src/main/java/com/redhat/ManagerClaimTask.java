@@ -61,12 +61,10 @@ public class ManagerClaimTask {
 
 		for (TaskSummary taskSummary : userTaskServicesClient.findTasksOwned(username, 0, 50)) {
 			processTask(userTaskServicesClient, username, taskSummary);
-			return;
 		}
 
 		for (TaskSummary taskSummary : userTaskServicesClient.findTasksAssignedAsPotentialOwner(username, 0, 50)) {
 			processTask(userTaskServicesClient, username, taskSummary);
-			return;
 		}
 	}
 }
