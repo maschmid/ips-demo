@@ -90,7 +90,7 @@
         {
             "description": "Git source URI for application",
             "name": "SOURCE_REPOSITORY_URL",
-            "value": "https://github.com/maschmid/ips-demo",
+            "value": "https://github.com/maschmid/ips-demo1",
             "required": true
         },
         {
