@@ -19,6 +19,15 @@
       <url>http://maven.latest.xpaas/api/hosted/local-deployments/</url>
     </snapshotRepository>
   </distributionManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-api</artifactId>
+      <version>6.4.0.Final-redhat-3</version>
+    </dependency>
+  </dependencies>
+
   <build>
     <plugins>
       <plugin>
