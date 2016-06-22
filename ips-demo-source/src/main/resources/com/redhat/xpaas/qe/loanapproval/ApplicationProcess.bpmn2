@@ -204,11 +204,11 @@ kcontext.setVariable(&quot;application&quot;, app);</bpmn2:script>
       <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="_eAJ0IzevEeavidJ7s91F_A" language="http://www.java.com/java"><![CDATA[return ((com.redhat.xpaas.qe.loanapproval.Application)kcontext.getVariable("application")).getAmount() >= 100;]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:exclusiveGateway id="_C52A0C4F-3E78-42DF-ABE4-4B1AC2BF9BC2" drools:selectable="true" drools:dg="" color:background-color="#f0e68c" color:border-color="#a67f00" color:color="#000000" name="" gatewayDirection="Diverging">
-      <bpmn2:incoming>_36400C9A-3874-4298-9AC9-A3C764B4C0DF</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
       <bpmn2:outgoing>_02D76CAC-16B9-4814-8D10-C0BE4B727788</bpmn2:outgoing>
       <bpmn2:outgoing>_1C1DF951-8A78-4DE1-8F3C-C3B5422FC5D5</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
-    <bpmn2:sequenceFlow id="_36400C9A-3874-4298-9AC9-A3C764B4C0DF" drools:selectable="true" color:background-color="#000000" color:border-color="#000000" color:color="#000000" sourceRef="_09A95A80-6FC7-4581-A7EB-FE718DDB8558" targetRef="_C52A0C4F-3E78-42DF-ABE4-4B1AC2BF9BC2"/>
+    <bpmn2:sequenceFlow id="_36400C9A-3874-4298-9AC9-A3C764B4C0DF" drools:selectable="true" color:background-color="#000000" color:border-color="#000000" color:color="#000000" sourceRef="_09A95A80-6FC7-4581-A7EB-FE718DDB8558" targetRef="UserTask_2"/>
     <bpmn2:sequenceFlow id="_02D76CAC-16B9-4814-8D10-C0BE4B727788" drools:selectable="true" drools:priority="2" color:background-color="#000000" color:border-color="#000000" color:color="#000000" name="Approved" sourceRef="_C52A0C4F-3E78-42DF-ABE4-4B1AC2BF9BC2" targetRef="_3DFEE899-49EF-4563-9DC2-03C42C217D28">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
@@ -263,6 +263,61 @@ kcontext.setVariable(&quot;application&quot;, app);</bpmn2:script>
       <bpmn2:incoming>_675036A4-242B-482B-BA61-EBD8498ED6D2</bpmn2:incoming>
     </bpmn2:endEvent>
     <bpmn2:sequenceFlow id="_675036A4-242B-482B-BA61-EBD8498ED6D2" drools:selectable="true" color:background-color="#000000" color:border-color="#000000" color:color="#000000" sourceRef="_3DFEE899-49EF-4563-9DC2-03C42C217D28" targetRef="_0274A5AD-DA20-4587-8562-E963BB2B9E83"/>
+    <bpmn2:userTask id="UserTask_2" drools:selectable="true" drools:scriptFormat="http://www.java.com/java" color:background-color="#fafad2" color:border-color="#000000" color:color="#000000" name="Supervisor approval">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Manager approval]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_36400C9A-3874-4298-9AC9-A3C764B4C0DF</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_2">
+        <bpmn2:dataInput id="DataInput_5" drools:dtype="String" itemSubjectRef="__09A95A80-6FC7-4581-A7EB-FE718DDB8558_TaskNameInputXItem" name="TaskName"/>
+        <bpmn2:dataInput id="DataInput_6" drools:dtype="com.redhat.xpaas.qe.loanapproval.Application" itemSubjectRef="__09A95A80-6FC7-4581-A7EB-FE718DDB8558_applicationInputXItem" name="application"/>
+        <bpmn2:dataInput id="DataInput_7" drools:dtype="Object" itemSubjectRef="__09A95A80-6FC7-4581-A7EB-FE718DDB8558_GroupIdInputXItem" name="GroupId"/>
+        <bpmn2:dataInput id="DataInput_8" drools:dtype="Object" itemSubjectRef="__09A95A80-6FC7-4581-A7EB-FE718DDB8558_SkippableInputXItem" name="Skippable"/>
+        <bpmn2:dataOutput id="DataOutput_2" drools:dtype="com.redhat.xpaas.qe.loanapproval.Application" itemSubjectRef="__09A95A80-6FC7-4581-A7EB-FE718DDB8558_applicationOutputXItem" name="application"/>
+        <bpmn2:inputSet id="InputSet_3" name="Input Set 2">
+          <bpmn2:dataInputRefs>DataInput_6</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_7</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_8</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_5</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_3" name="Output Set 2">
+          <bpmn2:dataOutputRefs>DataOutput_2</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_5">
+        <bpmn2:targetRef>DataInput_5</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_4">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_7">Supervisorapproval</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_8">_09A95A80-6FC7-4581-A7EB-FE718DDB8558_TaskNameInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_6">
+        <bpmn2:sourceRef>application</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataInput_6</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_7">
+        <bpmn2:targetRef>DataInput_7</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_5">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_9">supervisor</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_10">_09A95A80-6FC7-4581-A7EB-FE718DDB8558_GroupIdInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_8">
+        <bpmn2:targetRef>DataInput_8</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_6">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_11">true</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_12">_09A95A80-6FC7-4581-A7EB-FE718DDB8558_SkippableInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_2">
+        <bpmn2:sourceRef>DataOutput_2</bpmn2:sourceRef>
+        <bpmn2:targetRef>application</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:userTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_1" drools:priority="1" sourceRef="UserTask_2" targetRef="_C52A0C4F-3E78-42DF-ABE4-4B1AC2BF9BC2"/>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="_eALCMDevEeavidJ7s91F_A">
     <bpmndi:BPMNPlane id="_eALCMTevEeavidJ7s91F_A" bpmnElement="LoanApproval.Application">
@@ -299,9 +354,9 @@ kcontext.setVariable(&quot;application&quot;, app);</bpmn2:script>
         <bpmndi:BPMNLabel/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_eALCQTevEeavidJ7s91F_A" bpmnElement="_09A95A80-6FC7-4581-A7EB-FE718DDB8558">
-        <dc:Bounds height="80.0" width="100.0" x="495.0" y="236.0"/>
+        <dc:Bounds height="80.0" width="100.0" x="478.0" y="236.0"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds height="14.0" width="98.0" x="496.0" y="269.0"/>
+          <dc:Bounds height="14.0" width="98.0" x="479.0" y="269.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_eALCQjevEeavidJ7s91F_A" bpmnElement="_0D0D474F-0655-4FD7-92A6-8CCA2809C273" isMarkerVisible="true">
@@ -309,24 +364,30 @@ kcontext.setVariable(&quot;application&quot;, app);</bpmn2:script>
         <bpmndi:BPMNLabel/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_eALCRTevEeavidJ7s91F_A" bpmnElement="_C52A0C4F-3E78-42DF-ABE4-4B1AC2BF9BC2" isMarkerVisible="true">
-        <dc:Bounds height="40.0" width="40.0" x="645.0" y="256.0"/>
+        <dc:Bounds height="40.0" width="40.0" x="795.0" y="256.0"/>
         <bpmndi:BPMNLabel/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_eALCSDevEeavidJ7s91F_A" bpmnElement="_E7E839FB-45FA-4933-BE5B-5C0E8347E7F0">
-        <dc:Bounds height="28.0" width="28.0" x="942.0" y="126.0"/>
+        <dc:Bounds height="28.0" width="28.0" x="1092.0" y="126.0"/>
         <bpmndi:BPMNLabel/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_eALpQDevEeavidJ7s91F_A" bpmnElement="_14141E24-4278-4A72-9C88-672C6BA04114">
-        <dc:Bounds height="80.0" width="100.0" x="800.0" y="100.0"/>
+        <dc:Bounds height="80.0" width="100.0" x="950.0" y="100.0"/>
         <bpmndi:BPMNLabel/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_eALpQjevEeavidJ7s91F_A" bpmnElement="_3DFEE899-49EF-4563-9DC2-03C42C217D28">
-        <dc:Bounds height="80.0" width="100.0" x="800.0" y="236.0"/>
+        <dc:Bounds height="80.0" width="100.0" x="950.0" y="236.0"/>
         <bpmndi:BPMNLabel/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_eALpQzevEeavidJ7s91F_A" bpmnElement="_0274A5AD-DA20-4587-8562-E963BB2B9E83">
-        <dc:Bounds height="28.0" width="28.0" x="942.0" y="262.0"/>
+        <dc:Bounds height="28.0" width="28.0" x="1092.0" y="262.0"/>
         <bpmndi:BPMNLabel/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_UserTask_1" bpmnElement="UserTask_2">
+        <dc:Bounds height="80.0" width="100.0" x="640.0" y="231.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="28.0" width="62.0" x="659.0" y="257.0"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="_eALCNDevEeavidJ7s91F_A" bpmnElement="_2B7E27E5-7F79-4FC8-A7A0-172524169510" sourceElement="_eALCMjevEeavidJ7s91F_A" targetElement="_eALCPzevEeavidJ7s91F_A">
         <di:waypoint xsi:type="dc:Point" x="30.0" y="480.0"/>
@@ -379,44 +440,52 @@ kcontext.setVariable(&quot;application&quot;, app);</bpmn2:script>
       <bpmndi:BPMNEdge id="_eALCRDevEeavidJ7s91F_A" bpmnElement="_8A7F6FDD-10FE-4D36-B70E-9C8882022ADD" sourceElement="_eALCQjevEeavidJ7s91F_A" targetElement="_eALCQTevEeavidJ7s91F_A">
         <di:waypoint xsi:type="dc:Point" x="440.0" y="380.0"/>
         <di:waypoint xsi:type="dc:Point" x="440.0" y="276.0"/>
-        <di:waypoint xsi:type="dc:Point" x="495.0" y="276.0"/>
+        <di:waypoint xsi:type="dc:Point" x="478.0" y="276.0"/>
         <bpmndi:BPMNLabel>
           <dc:Bounds height="14.0" width="76.0" x="403.0" y="259.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="_eALCRjevEeavidJ7s91F_A" bpmnElement="_36400C9A-3874-4298-9AC9-A3C764B4C0DF" sourceElement="_eALCQTevEeavidJ7s91F_A" targetElement="_eALCRTevEeavidJ7s91F_A">
-        <di:waypoint xsi:type="dc:Point" x="595.0" y="276.0"/>
-        <di:waypoint xsi:type="dc:Point" x="620.0" y="276.0"/>
-        <di:waypoint xsi:type="dc:Point" x="645.0" y="276.0"/>
+      <bpmndi:BPMNEdge id="_eALCRjevEeavidJ7s91F_A" bpmnElement="_36400C9A-3874-4298-9AC9-A3C764B4C0DF" sourceElement="_eALCQTevEeavidJ7s91F_A" targetElement="BPMNShape_UserTask_1">
+        <di:waypoint xsi:type="dc:Point" x="578.0" y="276.0"/>
+        <di:waypoint xsi:type="dc:Point" x="609.0" y="276.0"/>
+        <di:waypoint xsi:type="dc:Point" x="609.0" y="271.0"/>
+        <di:waypoint xsi:type="dc:Point" x="640.0" y="271.0"/>
         <bpmndi:BPMNLabel/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="_eALCRzevEeavidJ7s91F_A" bpmnElement="_02D76CAC-16B9-4814-8D10-C0BE4B727788" sourceElement="_eALCRTevEeavidJ7s91F_A" targetElement="_eALpQjevEeavidJ7s91F_A">
-        <di:waypoint xsi:type="dc:Point" x="685.0" y="276.0"/>
-        <di:waypoint xsi:type="dc:Point" x="729.0" y="276.0"/>
-        <di:waypoint xsi:type="dc:Point" x="729.0" y="276.0"/>
-        <di:waypoint xsi:type="dc:Point" x="800.0" y="276.0"/>
+        <di:waypoint xsi:type="dc:Point" x="835.0" y="276.0"/>
+        <di:waypoint xsi:type="dc:Point" x="879.0" y="276.0"/>
+        <di:waypoint xsi:type="dc:Point" x="879.0" y="276.0"/>
+        <di:waypoint xsi:type="dc:Point" x="950.0" y="276.0"/>
         <bpmndi:BPMNLabel>
           <dc:Bounds height="14.0" width="51.0" x="704.0" y="270.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="_eALCSTevEeavidJ7s91F_A" bpmnElement="_1C1DF951-8A78-4DE1-8F3C-C3B5422FC5D5" sourceElement="_eALCRTevEeavidJ7s91F_A" targetElement="_eALpQDevEeavidJ7s91F_A">
-        <di:waypoint xsi:type="dc:Point" x="665.0" y="256.0"/>
-        <di:waypoint xsi:type="dc:Point" x="665.0" y="140.0"/>
-        <di:waypoint xsi:type="dc:Point" x="800.0" y="140.0"/>
+        <di:waypoint xsi:type="dc:Point" x="815.0" y="256.0"/>
+        <di:waypoint xsi:type="dc:Point" x="815.0" y="140.0"/>
+        <di:waypoint xsi:type="dc:Point" x="950.0" y="140.0"/>
         <bpmndi:BPMNLabel>
           <dc:Bounds height="14.0" width="49.0" x="646.0" y="71.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="_eALpQTevEeavidJ7s91F_A" bpmnElement="_9390620C-1D0A-49DC-AF14-966A80D8D47E" sourceElement="_eALpQDevEeavidJ7s91F_A" targetElement="_eALCSDevEeavidJ7s91F_A">
-        <di:waypoint xsi:type="dc:Point" x="900.0" y="140.0"/>
-        <di:waypoint xsi:type="dc:Point" x="921.0" y="140.0"/>
-        <di:waypoint xsi:type="dc:Point" x="942.0" y="140.0"/>
+        <di:waypoint xsi:type="dc:Point" x="1050.0" y="140.0"/>
+        <di:waypoint xsi:type="dc:Point" x="1071.0" y="140.0"/>
+        <di:waypoint xsi:type="dc:Point" x="1092.0" y="140.0"/>
         <bpmndi:BPMNLabel/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="_eALpRDevEeavidJ7s91F_A" bpmnElement="_675036A4-242B-482B-BA61-EBD8498ED6D2" sourceElement="_eALpQjevEeavidJ7s91F_A" targetElement="_eALpQzevEeavidJ7s91F_A">
-        <di:waypoint xsi:type="dc:Point" x="900.0" y="276.0"/>
-        <di:waypoint xsi:type="dc:Point" x="921.0" y="276.0"/>
-        <di:waypoint xsi:type="dc:Point" x="942.0" y="276.0"/>
+        <di:waypoint xsi:type="dc:Point" x="1050.0" y="276.0"/>
+        <di:waypoint xsi:type="dc:Point" x="1071.0" y="276.0"/>
+        <di:waypoint xsi:type="dc:Point" x="1092.0" y="276.0"/>
+        <bpmndi:BPMNLabel/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="BPMNShape_UserTask_1" targetElement="_eALCRTevEeavidJ7s91F_A">
+        <di:waypoint xsi:type="dc:Point" x="740.0" y="271.0"/>
+        <di:waypoint xsi:type="dc:Point" x="767.0" y="271.0"/>
+        <di:waypoint xsi:type="dc:Point" x="767.0" y="276.0"/>
+        <di:waypoint xsi:type="dc:Point" x="795.0" y="276.0"/>
         <bpmndi:BPMNLabel/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
