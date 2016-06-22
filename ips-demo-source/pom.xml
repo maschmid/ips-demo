@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.redhat.xpaas.qe</groupId>
   <artifactId>LoanApproval</artifactId>
-  <version>1.18</version>
+  <version>1.22</version>
   <packaging>kjar</packaging>
   <name>LoanApproval</name>
   <distributionManagement>
@@ -19,7 +19,6 @@
       <url>http://maven.latest.xpaas/api/hosted/local-deployments/</url>
     </snapshotRepository>
   </distributionManagement>
-
   <dependencies>
     <dependency>
       <groupId>org.kie</groupId>
@@ -27,7 +26,6 @@
       <version>6.4.0.Final-redhat-3</version>
     </dependency>
   </dependencies>
-
   <build>
     <plugins>
       <plugin>
