@@ -9,7 +9,6 @@ import org.kie.server.client.UserTaskServicesClient;
 
 import com.redhat.xpaas.qe.loanapproval.Application;
 
-import java.io.Console;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -19,8 +18,6 @@ public class ManagerClaimTask {
 	private static final String ENDPOINT = "http://kie-app-cruyff-ips-training.apps.latest.xpaas/kie-server/services/rest/server";
 
 	private static void processTask(final UserTaskServicesClient userTaskServicesClient, String username, TaskSummary taskSummary) {
-
-		System.out.println("status: " +  taskSummary.getStatus());
 
 		switch (taskSummary.getStatus()) {
 			case "Ready": userTaskServicesClient.claimTask("LoanApproval", taskSummary.getId(), username);
